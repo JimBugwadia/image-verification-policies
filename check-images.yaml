@@ -1,0 +1,28 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-image
+spec:
+  validationFailureAction: enforce
+  background: false
+  webhookTimeoutSeconds: 30
+  failurePolicy: Fail  
+  rules:
+    - name: check-image
+      match:
+        resources:
+          kinds:
+            - Pod
+      verifyImages:
+      - image: "*"
+        key: |-
+          -----BEGIN PUBLIC KEY-----
+          MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHMmDjK65krAyDaGaeyWNzgvIu155
+          JI50B2vezCw8+3CVeE0lJTL5dbL3OP98Za0oAEBJcOxky8Riy/XcmfKZbw==
+          -----END PUBLIC KEY-----
+      - image: "ghcr.io/jimbugwadia/*"
+        key: |-
+          -----BEGIN PUBLIC KEY-----
+          MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAES8du3JjhYT9/GFQ7/u2VwVGfCgup
+          loAfx/LWRhWKidLFCSlXFOKFmjW1hFq5wJ3Mm7UFv3mV1D7w/BiGWmMrWw==
+          -----END PUBLIC KEY-----  
