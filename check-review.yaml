@@ -5,7 +5,7 @@ metadata:
   annotations:
     pod-policies.kyverno.io/autogen-controllers: none
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: audit
   background: false
   webhookTimeoutSeconds: 30
   failurePolicy: Fail
