@@ -25,4 +25,4 @@ spec:
               - all:
                 - key: "{{ components[?name == 'log4j-core'].version | [0] }}"
                   operator: Equals
-                  value: "2.15.*"
+                  value: "2.17.*"
