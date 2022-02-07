@@ -1,0 +1,13 @@
+resources:
+  - check-images.yaml
+  - check-review.yaml
+  - check-sbom.yaml
+  - check-vex.yaml
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/validationFailureAction
+        value: enforce
+    target:
+      kind: ClusterPolicy 
