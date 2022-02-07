@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: attest-sbom
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: audit
   webhookTimeoutSeconds: 30
   failurePolicy: Fail  
   rules:

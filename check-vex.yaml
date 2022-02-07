@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: attest-vec
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: audit
   webhookTimeoutSeconds: 30
   failurePolicy: Fail  
   rules:
@@ -23,7 +23,7 @@ spec:
           - predicateType: https://cyclonedx.org/BOM
             conditions:
               - all:
-                # Vulenarabilities with a score higher than 8.0, must be 0
+                # vulnerabilities with a score higher than 8.0, must be 0
                 - key: "{{ vulnerabilities[].ratings[?score >= `8.0`][] | length(@) }}"
                   operator: Equals
                   value: 0
